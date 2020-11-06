@@ -4,9 +4,9 @@ using System.Text;
 
 namespace RPS
 {
-    public class AI
+    public class BeatPreviousAI : IAI
     {
-        public static string chooseRPS(string lastPlay)
+        public string ChooseRPS(string lastPlay)
         {
             string choice = null;
             var rando = new Random();
@@ -31,25 +31,7 @@ namespace RPS
                         break;
                 }
             }
-            else
-            {
-                Console.WriteLine("random");
-                int randoChoice = rando.Next(1, 3);
-                switch (randoChoice)
-                {
-                    case 1:
-                        choice = "p";
-                        break;
-                    case 2:
-                        choice = "s";
-                        break;
-                    case 3:
-                        choice = "r";
-                        break;
-                    default:
-                        break;
-                }
-            }
+            
             return choice;
         }
     }
