@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HelloVisualSudio.Library\HelloVisualStudio.Library.csproj" />
+    <ProjectReference Include="..\HelloVisualStudio.Library\HelloVisualStudio.Library.csproj" />
   </ItemGroup>
 
 </Project>
