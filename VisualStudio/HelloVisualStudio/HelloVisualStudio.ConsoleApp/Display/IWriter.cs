@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using HelloVisualStudio.Library;
 
-namespace HelloVisualStudio.ConsoleApp
+
+// change namespace, add new folder name
+namespace HelloVisualStudio.ConsoleApp.Display
 {
     public interface IWriter
     {

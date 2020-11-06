@@ -1,4 +1,7 @@
-﻿using System;
+﻿using HelloVisualStudio.ConsoleApp.Display;
+using HelloVisualStudio.Library;
+using HelloVisualStudio.Library.Sorting;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 
@@ -11,7 +14,7 @@ namespace HelloVisualStudio.ConsoleApp
             // separation of concerns
             // different concerns in code shouldn't be tangled together
 
-            // single responsibility principle
+            // single responsibility principle (S in SOLID)
             // a unit of code like class method should have just one responsibility
 
             // DRY principle do not repeat yourself
@@ -19,28 +22,54 @@ namespace HelloVisualStudio.ConsoleApp
 
             // functionalities 
             // have a list of products
-            List<Product> catalog= GetProducts();
-            // display them to the user
+            List<Product> catalog = GetProducts();
 
-            // allow for some customization of that display to the user
-            Display(catalog);
+            // user's choice of sort and display
+            string userInput = null;
+            while (userInput != "s" && userInput != "d")
+            {
+                Console.WriteLine("Enter s for simple, d for detailed");
+                userInput = Console.ReadLine();
+            }
 
-            IWriter writer;
-
-            // dependency inversion principle 
+            // dependency inversion principle (D in SOLID)
             // dont have classes depend on each other directly
-            // instead, have them depend on interface
+            // instead, have them depend on 
+            //  A(B)  ,  A(Interface B)
+            // polymorphism
+            string userInput2 = null;
+            while (userInput2 != "y" && userInput2 != "n")
+            {
+                Console.WriteLine("Have the list sorted? y/n ");
+                userInput2 = Console.ReadLine();
+            }
+
+            ISorter sorter;
+            if (userInput2 == "y")
+            {
+                sorter = new PriceSorter();
+            }
+            else
+            {
+                sorter = new NonSorter();
+            }
+
+            // sorted catalog goes in to writer
+            IWriter writer;
+            if (userInput == "s")
+            {
+                writer = new SimpleWriter(sorter);
+            }
+            else
+            {
+                writer = new DetailedWriter(sorter);
+            }
+
+            writer.FormatAndDisplay(catalog);
 
         }
 
-        static void Display(List<Product> catalog)
-        {
-            // foreach display
-            foreach (var product in catalog)
-            {
-                Console.WriteLine(product.Id);
-            }
-          }
+       
 
         static List<Product> CollectionDigression()
         {

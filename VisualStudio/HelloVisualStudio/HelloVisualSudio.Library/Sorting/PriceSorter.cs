@@ -1,20 +1,18 @@
-﻿using System;
+﻿
+using HelloVisualStudio.Library.Sorting;
+using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
-using HelloVisualStudio.Library;
-// using 
 
 namespace HelloVisualStudio.Library.Sorting
 {
-    public class NonSorter: ISorter
+    public class PriceSorter : ISorter
     {
         public List<Product> SortProducts(List<Product> catalog)
         {
-            // no sort
-            // ToList() brand new list
-            return catalog.ToList();
+            return catalog.OrderBy(x => x.Price).ToList();
         }
     }
 }
