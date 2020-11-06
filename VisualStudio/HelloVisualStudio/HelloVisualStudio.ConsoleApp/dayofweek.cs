@@ -4,11 +4,15 @@ using System.Text;
 
 namespace HelloVisualStudio.ConsoleApp
 {
-    class Writer
+    public enum dayofweek
     {
+        Mon,
+        Tue,
+        Wed,
+        Thus,
+        Fri,
+        Sat,
+        Sun
 
-        // display catalog message to users
-
-        
     }
 }

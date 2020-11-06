@@ -22,6 +22,9 @@ namespace HelloVisualStudio.ConsoleApp
         // further restriction
         public string  Id { get; private set; }
 
+        // set initial value
+        public dayofweek day { get; set; } = dayofweek.Fri;
+
         // name
         private string name;
 
@@ -74,6 +77,7 @@ namespace HelloVisualStudio.ConsoleApp
         // }
 
         // must have constructor if the object requires some data to exist
+        // once provided, will replace default constructor
         public Product(string id, string name, double price, int quantity)
         {
             Id = id;
