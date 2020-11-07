@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Text.Json;
 
@@ -29,7 +30,19 @@ namespace RPS
             };
             */
 
-            return new Score();
+            // when file doesn't exist
+            string json;
+            try
+            {
+                json = File.ReadAllText(filePathField);
+            }
+            catch (IOException e)
+            {
+                return new Score();
+            }
+            // deserialize to a specific class
+            Score data = JsonSerializer.Deserialize<Score>(json);
+            return data;
         }
 
         public void Write(Score data)
@@ -39,9 +52,9 @@ namespace RPS
             // System.Text.Json builtin new fast
             // Newtonsoft.Json, aka JSON.NET , popular
 
-            string Json = JsonSerializer.Serialize(data);
+            string json = JsonSerializer.Serialize(data);
 
-            File.WriteAllText(filePathField, Json);
+            File.WriteAllText(filePathField, json);
         }
     }
 }

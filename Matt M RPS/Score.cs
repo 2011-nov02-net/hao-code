@@ -8,9 +8,9 @@ namespace RPS
     {
         // tracks win, loss, and ties
         public event Action WinHappened;
-        public int winCount { get; private set; } = 0;
-        public int lossCount { get; private set; } = 0;
-        public int tieCount { get; private set; } = 0;
+        public int winCount { get; set; } = 0;
+        public int lossCount { get;  set; } = 0;
+        public int tieCount { get; set; } = 0;
 
         // methods to increment scores
         public void winSet()
