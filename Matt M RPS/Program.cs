@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
 
 namespace RPS
 {
     public class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             // in a .net program, paths will be relative to the location of the application dll.( bin/Debug/etc)
             // my path could be different than Nick's 
@@ -16,9 +17,8 @@ namespace RPS
             Console.WriteLine("Let's Play Rock Paper Scissors!");
             // Creates new instances of game and score
             var playerGame = new RPSgame();
-            var playerScore = persistence.Read();
-            // no parameter
-            playerScore.WinHappened += () => { Console.WriteLine("Win via event"); };
+            Task<Score> playerScoreTask = persistence.ReadAsync();
+            
 
             List<IAI>ais = GetAllAIs();
             var random = new Random();
@@ -28,6 +28,10 @@ namespace RPS
             //Gather's user's initial choiuce
             Console.WriteLine("Choose rock (r), paper (p), or scissors(s). Enter x to quit.");
             string playerChoice = Console.ReadLine();
+
+            var playerScore = await playerScoreTask;
+            // no parameter
+            playerScore.WinHappened += () => { Console.WriteLine("Win via event"); };
 
             // Loops through game until player chooses to quit.
             IAI currentAI;
@@ -48,7 +52,7 @@ namespace RPS
                 playerChoice = Console.ReadLine();
             }
             // end of program
-            persistence.Write(playerScore);
+            await persistence.WriteAsync(playerScore);
         }
 
         static List<IAI> GetAllAIs()

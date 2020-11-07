@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace RPS
 {
@@ -21,7 +22,8 @@ namespace RPS
             filePathField = filePath;
         }
 
-        public Score Read()
+        // add async if there is a async operation
+        public async Task<Score> ReadAsync()
         {
             // property initialization syntax
             // Score() zero argument constructor
@@ -39,7 +41,9 @@ namespace RPS
             string json;
             try
             {
-                json = File.ReadAllText(filePathField);
+                // async method change return type to Task<>
+                Task<string> jsonTask = File.ReadAllTextAsync(filePathField);
+                json = await jsonTask;
             }
             catch (IOException e)
             {
@@ -58,7 +62,7 @@ namespace RPS
             // 4. any code that calls this method: start from step 1.
         }
 
-        public void Write(Score data)
+        public async Task WriteAsync(Score data)
         {
             // ways to work with JSON in .net
             // -DataContractSerializer builtin semiold
@@ -69,7 +73,7 @@ namespace RPS
             string json = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true} );
 
             // helper 
-            File.WriteAllText(filePathField, json);
+            // File.WriteAllText(filePathField, json);
 
             // expand
 
@@ -117,7 +121,8 @@ namespace RPS
             // newer form of the using statement
             // call Dispose when the variable goes out of scope
             using var fileWriter = new StreamWriter(filePathField);
-            fileWriter.Write(json);
+            await fileWriter.WriteAsync(json);
+            
 
             // when you instantiate any class that implements IDisposable interface, use a using statement to handle cleaning up
             // using 1 namespace 2 close unmanaged resource
