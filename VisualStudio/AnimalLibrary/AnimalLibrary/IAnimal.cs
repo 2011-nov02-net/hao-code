@@ -7,7 +7,7 @@ namespace AnimalLibrary
     public interface IAnimal
     {
         int LegCount { get; }
-        bool CanSwin { get; }
+        bool CanSwim { get; }
         double Height { get; }
     }
 }

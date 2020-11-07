@@ -48,6 +48,14 @@ namespace RPS
             // deserialize to a specific class
             Score data = JsonSerializer.Deserialize<Score>(json);
             return data;
+
+            // steps to go async:
+            // 1. look for a version of the method you want to call that ends in the "Async" prefix that returns a Task. call that instead.
+            // 2. now you have a Task instead of the thing you wanted. either await it right away, or, if you can do something useful in the meantime,
+            //        do that first.
+            // 3. compile error: method must be async. add "async" to method. change return type: void becomes Task, any T becomes Task<T>.
+            //        also, by convention, add the "Async" suffix to your own method.
+            // 4. any code that calls this method: start from step 1.
         }
 
         public void Write(Score data)
