@@ -1,0 +1,26 @@
+--starts at 3-305
+-- object-relational mapper
+-- java hibernate, lower level
+-- .net framework, .net core - ef core
+--  nuget packages 
+
+learn Entity framework core
+
+classe that match
+didi he change it, rewatch
+use nuget to add
+do it to two
+
+
+
+
+step 3
+ dotnet  tool install- global  ..
+
+
+
+ not connection-string to github
+
+ azure connection string
+ copied locally
+ t lives

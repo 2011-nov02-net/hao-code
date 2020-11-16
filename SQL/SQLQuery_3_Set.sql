@@ -99,12 +99,40 @@ WHERE l.InvoiceId IN (
 --    who was hired younger than 35.
 select * from employee
 
+-- employees young than 35 when hired
 select * from Employee e
 where DATEDIFF(MONTH,BirthDate,HireDate) < 12*35
 
-
+-- sales support agent younger than 35
 select c.FirstName,c.LastName,c.Country 
 from Customer c
 join Employee e on c.SupportRepId = e.EmployeeId
 where DATEDIFF(MONTH,BirthDate,HireDate) < 12*35
 
+select * from customer where SupportRepId = 3;
+
+-----------------------------------------------
+-- 1. which artists did not make any albums at all?
+-- 71 entries
+
+-- 2. which artists did not record any tracks of the Latin genre?
+-- 28 unique latin artists
+-- 275 artists - 28 latin artist 
+-- 247
+
+-- 3. which video track has the longest length? (use media type table)
+-- trackID 2820
+
+-- 4. find the names of the customers who live in the same city as the
+--    boss employee (the one who reports to nobody)
+-- ID14 Mark Philips in Edmonton 
+
+-- 5. how many audio tracks were bought by German customers, and what was
+--    the total price paid for them?
+-- 146 144.54, done using join
+
+-- 6. list the names and countries of the customers supported by an employee
+--    who was hired younger than 35.
+-- 3 employees younger than 35 when hired
+-- 1 sales support agent younger than 35
+-- 21 entries all Jane Peacock's customers
