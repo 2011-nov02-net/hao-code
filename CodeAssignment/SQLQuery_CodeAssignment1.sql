@@ -20,7 +20,7 @@ create table CA.customers
 
 create table CA.orders
 (
-    id NVARCHAR(10) not null,
+    id NVARCHAR(10) unique not null,
     productid NVARCHAR(10) not null,
     customerid NVARCHAR(10) not null,
     foreign key(productid) REFERENCES CA.products(id)
