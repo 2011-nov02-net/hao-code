@@ -1,0 +1,35 @@
+#main{width: 400px; height:600px; 
+        border-style: solid;
+        border-color: #440404 ;
+        background-color: rgba(223, 178, 94, 0.918);
+        position: fixed;
+        left:500px;
+        right: 500px;
+        top:50px;
+        bottom:200px;
+        
+          }
+
+#image{ border-style: solid;
+        border-color:orange;
+        border-radius: 10px;
+        width: 300px;
+        height: 100px;
+        margin-bottom: 40px;
+        
+}
+
+#textbody{
+    border-style: dashed;
+    border-radius: 10px;
+    border-color: orange;
+    background-color: yellow;
+    width: 300px;
+    height: 300px;
+    
+}
+
+#p1::first-line{ font-weight: bold;
+            text-decoration: underline;}
+#p2::first-line{ font-weight: bold;
+            text-decoration: underline;}
