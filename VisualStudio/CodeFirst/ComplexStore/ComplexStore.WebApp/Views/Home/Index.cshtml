@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    @{
+        if (ViewData.ContainsKey("TotalStock"))
+        {
+            @: This part must be html and will not have auto complete @ViewData["TotalStock"]
+        }
+
+
+    }
+</div>

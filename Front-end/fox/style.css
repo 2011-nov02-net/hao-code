@@ -26,10 +26,9 @@
     background-color: yellow;
     width: 300px;
     height: 300px;
-    
+    overflow-y: scroll;
 }
 
-#p1::first-line{ font-weight: bold;
-            text-decoration: underline;}
-#p2::first-line{ font-weight: bold;
-            text-decoration: underline;}
+#highlight {font-weight: bold; text-decoration: underline;}
+
+#highlight2 {font-weight: bold; text-decoration: underline;}
