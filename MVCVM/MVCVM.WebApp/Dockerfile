@@ -7,6 +7,7 @@ WORKDIR /app
 COPY . ./
 RUN dotnet publish -c Release -o out
 
+ENV ASPNETCORE_URLS http://*:80
 # Build runtime image
 
 ENTRYPOINT ["dotnet", "out/MVCVM.WebApp.dll"]
