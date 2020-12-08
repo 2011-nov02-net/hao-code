@@ -25,6 +25,8 @@ WORKDIR /app
 COPY . ./
 RUN dotnet publish -c Release -o out
 
+ENV ASPNETCORE_URLS http://*:80
+
 # similar to CMD
 # bin/sh -c, treats anything that is typed after it as a shell command
 ENTRYPOINT ["dotnet", "out/MVCVM.WebApp.dll"]
